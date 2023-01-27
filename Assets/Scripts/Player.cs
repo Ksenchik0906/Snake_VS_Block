@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
+using TMPro;
+
 
 public class Player : MonoBehaviour
 {
@@ -11,12 +12,12 @@ public class Player : MonoBehaviour
     float moveX;
     int _hp;
     int ii = 1;
-
+    public TextMeshProUGUI HpText, DefTxt;
     public Vector2 BorderX, BorderY;
     public Transform Camera;
     public int Hp;
     public Bonus Bonus;
-    public GameObject PlayPrefab;
+    public GameObject PlayPrefab, PanelMenu;
     public Transform PlayPrefab1;
     public PlayPref PlayPref;
     public float _speed1;
@@ -25,18 +26,18 @@ public class Player : MonoBehaviour
     private List<Transform> snakeCircles = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
 
-    private void Awake()
+    private void  Start()
     {
+      //  PanelMenu.SetActive(false);
         _player = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
         positions.Add(_player.position);
-    }
-
-    void Start()
-    {       
+        HpText.text = "" + Hp; 
+        _moveY = new Vector3(0f, 0f, 150f);
         _moveY = new Vector3(0f, 0f, 150f);
         _hp = 1;
     }
+
 
     void FixedUpdate()
     {
@@ -71,6 +72,12 @@ public class Player : MonoBehaviour
             snakeCircles[i].position = Vector3.Lerp(positions[i + 1], positions[i], distance / CircleDiameter);
         }
 
+        HpText.text = "" + Hp;
+        if(Hp <= 0)
+        {
+            DefTxt.text = "Defeat";
+            PanelMenu.SetActive(true);
+        }
         if (Hp > _hp)
         {
             while(ii < Hp)
