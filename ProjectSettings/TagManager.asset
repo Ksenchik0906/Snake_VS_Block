@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bonus
   - Let
+  - Player1
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player1
   - 
   - 
   - 

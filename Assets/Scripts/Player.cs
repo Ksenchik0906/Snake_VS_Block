@@ -8,16 +8,13 @@ public class Player : MonoBehaviour
     Vector3 _moveY;
     float _speed = 5f;
     float moveX;
-    int _hp;
+    int _hp = 1;
     int ii = 1;
     public Vector2 BorderX, BorderY;
     public Transform Camera;
     public int Hp;
-    public Bonus Bonus;
-  //  public GameObject PlayPrefab;
-    public Transform PlayPrefab1;
-    public PlayPref PlayPref;
-  //  public float _speed1;
+  //  public Bonus Bonus;  
+    public Transform PlayPrefab1;     
     float CircleDiameter = 1;
 
     private List<Transform> snakeCircles = new List<Transform>();
@@ -32,8 +29,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {       
-        _moveY = new Vector3(0f, 0f, 150f);
-        _hp = 1;
+        _moveY = new Vector3(0f, 0f, 150f);       
     }
 
     void FixedUpdate()
