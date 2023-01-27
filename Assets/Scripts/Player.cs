@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+<<<<<<< Updated upstream
 using System;
+=======
+using TMPro;
+>>>>>>> Stashed changes
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +19,7 @@ public class Player : MonoBehaviour
     public Vector2 BorderX, BorderY;
     public Transform Camera;
     public int Hp;
+<<<<<<< Updated upstream
     public Bonus Bonus;
     public GameObject PlayPrefab;
     public Transform PlayPrefab1;
@@ -22,21 +27,34 @@ public class Player : MonoBehaviour
     public float _speed1;
     public float CircleDiameter;
 
+=======
+    public TextMeshProUGUI HpText, DefTxt;
+    public Transform PlayPrefab1;     
+    float CircleDiameter = 1;
+    public GameObject PanelMenu;
+>>>>>>> Stashed changes
     private List<Transform> snakeCircles = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
 
-    private void Awake()
+    private void  Start()
     {
+      //  PanelMenu.SetActive(false);
         _player = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody>();
         positions.Add(_player.position);
+        HpText.text = "" + Hp; 
+        _moveY = new Vector3(0f, 0f, 150f);
     }
+<<<<<<< Updated upstream
 
     void Start()
     {       
         _moveY = new Vector3(0f, 0f, 150f);
         _hp = 1;
     }
+=======
+       
+>>>>>>> Stashed changes
 
     void FixedUpdate()
     {
@@ -71,6 +89,12 @@ public class Player : MonoBehaviour
             snakeCircles[i].position = Vector3.Lerp(positions[i + 1], positions[i], distance / CircleDiameter);
         }
 
+        HpText.text = "" + Hp;
+        if(Hp <= 0)
+        {
+            DefTxt.text = "Defeat";
+            PanelMenu.SetActive(true);
+        }
         if (Hp > _hp)
         {
             while(ii < Hp)
