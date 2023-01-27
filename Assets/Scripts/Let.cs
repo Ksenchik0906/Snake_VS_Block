@@ -19,8 +19,7 @@ public class Let : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
-        
+            Destroy(gameObject);        
         }
     }
 }

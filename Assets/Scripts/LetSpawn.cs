@@ -11,10 +11,7 @@ public class LetSpawn : MonoBehaviour
     public Material SiniiMaterial;   
    
     void Start()
-    {
-        //  GameObject pl = Instantiate(Player, new Vector3(0, 0.45f, 0), Quaternion.identity);
-        //  GameObject cm = Instantiate(Camera, new Vector3(0, 20, 5), Quaternion.identity);    
-            
+    {        
         for (int b=1; b<8; b++)
         {
             PlaneScale.localScale = new Vector3(1, 1, planeCount + 1);
@@ -35,9 +32,7 @@ public class LetSpawn : MonoBehaviour
                        let.Hp = type;
                        if(type <= 4) let._meshRender.material = RedMaterial;
                        if (5 <= type) let._meshRender.material = SiniiMaterial;
-
-                    }
-                   
+                    }                   
                 }
                 else
                 {
@@ -47,7 +42,6 @@ public class LetSpawn : MonoBehaviour
                     let.Hp = type;
                     if (type <= 4) let._meshRender.material = RedMaterial;
                     if (5 <= type) let._meshRender.material = SiniiMaterial;
-
                 }
             }
 

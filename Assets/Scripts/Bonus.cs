@@ -15,8 +15,6 @@ public class Bonus : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-
         }
-    }
-       
+    }       
 }

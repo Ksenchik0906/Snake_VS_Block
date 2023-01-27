@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public class Player : MonoBehaviour
 {
@@ -11,16 +10,15 @@ public class Player : MonoBehaviour
     float moveX;
     int _hp;
     int ii = 1;
-
     public Vector2 BorderX, BorderY;
     public Transform Camera;
     public int Hp;
     public Bonus Bonus;
-    public GameObject PlayPrefab;
+  //  public GameObject PlayPrefab;
     public Transform PlayPrefab1;
     public PlayPref PlayPref;
-    public float _speed1;
-    public float CircleDiameter;
+  //  public float _speed1;
+    float CircleDiameter = 1;
 
     private List<Transform> snakeCircles = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
@@ -42,14 +40,8 @@ public class Player : MonoBehaviour
     {
         _rb.AddForce(_moveY, ForceMode.Acceleration);
         Camera.position = new Vector3(Camera.position.x, 20, _player.position.z + 5);
-        moveX = Input.GetAxis("Horizontal");
 
-        //   if(Input.GetMouseButton(0))
-        //   {
-        //       Vector3 mouse = new Vector3(Input.GetAxis("Mouse X") * _speed * Time.deltaTime, 0, 0);
-        //       transform.Translate(mouse * _speed);           
-        //   }    
-
+        moveX = Input.GetAxis("Horizontal");   
         _rb.velocity = new Vector3(moveX, 0, 0) * _speed;
          transform.position = new Vector3(Mathf.Clamp(transform.position.x, BorderX.x, BorderX.y), 0.5f,
             Mathf.Clamp(transform.position.z, BorderY.x, BorderY.y));
