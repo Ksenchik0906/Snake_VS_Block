@@ -1,24 +1,28 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class LetSpawn : MonoBehaviour
-{
-    public GameObject LetPrefab, BonusPrefab, Player, Camera;
-    public Transform PlaneScale, FinishPlatform;
-    int planeCount = 8;   
-    public Material RedMaterial;
-    public Material SiniiMaterial;   
+{ 
+    int _planeCount = 8;
+    public int Level;
+    public GameObject LetPrefab, BonusPrefab;
+    public Transform PlaneScale, FinishPlatform;      
+    public Material RedMaterial, SiniiMaterial;    
+    public GameMeneg GM;
+    public TextMeshProUGUI LevelTxt, PanelLevelTxt;
    
-    void Start()
+    void Start() 
     {
-        //  GameObject pl = Instantiate(Player, new Vector3(0, 0.45f, 0), Quaternion.identity);
-        //  GameObject cm = Instantiate(Camera, new Vector3(0, 20, 5), Quaternion.identity);    
-            
-        for (int b=1; b<8; b++)
+        Level = GM.Level;
+        _planeCount += Level;
+        LevelTxt.text = Level+1  + " Level" ;
+        PanelLevelTxt.text = Level+1 + " Level";
+        Debug.Log("Level = "+ Level);
+
+        for (int b=1; b < _planeCount; b++)
         {
-            PlaneScale.localScale = new Vector3(1, 1, planeCount + 1);
-            FinishPlatform.localPosition = new Vector3(0, 0, 10 * planeCount);
+            PlaneScale.localScale = new Vector3(1, 1, _planeCount + 1);
+            FinishPlatform.localPosition = new Vector3(0, 0.5f, 10 * _planeCount);
 
             for (int i=0; i<5; i++)
             {
@@ -35,9 +39,7 @@ public class LetSpawn : MonoBehaviour
                        let.Hp = type;
                        if(type <= 4) let._meshRender.material = RedMaterial;
                        if (5 <= type) let._meshRender.material = SiniiMaterial;
-
-                    }
-                   
+                    }                   
                 }
                 else
                 {
@@ -47,7 +49,6 @@ public class LetSpawn : MonoBehaviour
                     let.Hp = type;
                     if (type <= 4) let._meshRender.material = RedMaterial;
                     if (5 <= type) let._meshRender.material = SiniiMaterial;
-
                 }
             }
 
